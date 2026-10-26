@@ -1,0 +1,21 @@
+1. What is the I2C addresses of the accelerometer and magnetometer? Represent the r/w bit using b
+    Accelerometer: 0011001b
+    Magnetometer:  0011110b
+
+2. What is the sub-address (SUB), and how does it differ from the I2C address?
+The I2C address contains the address of the sensor, so in this case, it holds the address of the
+accelerometer/magnetometer. The sub-address contains a specefic memory address, register, or command
+within the accelermoter/magnetometer, used the cutomize it's functionality. The sub address is sent after the
+I2C address has been acknowledged.
+
+3. To enable acceleration data measurement, we need to configure the CTRL1 register by selecting the data rate and setting the enable bits. What is the CTRL1 register address and what value should be written to this register to accomplish this?
+The CTRL1 register address is 010 0000. Bits 4-7 should be set to 0101. Bit 3 should be set to 0. Bits 0-2 should be set to 111. The total value written should be 01010111.
+
+4. To read acceleration data for the X, Y, and Z axes, what are the 8-bit sub-addresses that
+the transmitter would use to request the data?
+OUT_X_L_A: 010 1000
+OUT_X_H_A: 010 1001
+OUT_Y_L_A: 010 1010
+OUT_Y_H_A: 010 1011
+OUT_Z_L_A: 010 1100
+OUT_Z_H_A: 010 1101
