@@ -19,3 +19,9 @@ OUT_Y_L_A: 010 1010
 OUT_Y_H_A: 010 1011
 OUT_Z_L_A: 010 1100
 OUT_Z_H_A: 010 1101
+
+Part 5: Explain how the arguments to HAL I2C Mem Read() should be changed to accomplish this.
+The third argument to HAL_I2C_Mem_Read needs to be adjusted by having it's most significant bit turned on. 
+This is because the auto-increment flag is dedicated to the 7th bit. Also, the output data buffer has to 
+accomodate 6 bytes, 2 for each dimension. Lastly, we need to adjust the 6th argument that sets the number
+of bytes to read. Before, we only needed to read one byte, but we now need to read 6 bytes.
